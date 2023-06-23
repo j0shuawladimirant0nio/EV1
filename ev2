@@ -1,0 +1,62 @@
+import requests
+import json
+import urllib.parse
+
+url= "https://www.mapquestapi.com/directions/v2/route?"
+key= "q6ermuoqCmahFNxHOyEDzphrusL1RrkJ"
+
+var1= input("Lugar de origen:  ")
+var2= input("Lugar de destino:  ")
+
+conect= url + str("key=") + key + str("&from=") + var1 + str("to=") + var2
+print(conect)
+
+respuesta= requests.get(conect).json()
+print(respuesta)
+
+
+route_formated_time = "*route_formated_time"
+
+route_distance = "*route_distance"
+
+route_index_0_narrative = "*route, *index:0_narrative"
+
+route_index_2_narrative = "*route, *index:2_narrati
+
+
+touch index.html
+vim index.html
+cat index.html
+
+mkdir joshua2
+sudo chown devasc joshua2/
+
+-docker run -t -d -p 5040:5040 --name joshua2 joshua2
+
+
+
+
+FROM ubuntu
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install apache2 -y
+COPY index.html /var/www/html/
+EXPOSE 5030 
+
+from	flask import Flask
+from	flask import Request  		
+from	flask import render_template
+
+var = Flask(__name__) 
+@var.route("/")
+def main():
+    return render_template("index.html")
+if __name__	== "__main__":
+  var.run(host="0.0.0.0", port=5040)
+
+FROM python
+RUN apt-get update
+RUN pip install flask
+COPY index.html /home/EV2/joshua2/templates
+COPY ev2.py /home/EV2
+EXPOSE 5040
+CMD python /home/EV2/ev2.py
